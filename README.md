@@ -40,7 +40,9 @@ Revert specific commit
 
 `git revert HEAD~3`
 
-This will NOT undo the latest three commits. You have to revert EVERY SINGLE commit:
+This will NOT undo the latest three commits. 
+
+In case you want to revert multiple commits, You have to revert EVERY SINGLE commit:
 
 - `git revert --no-commit 17b787d784065c`
 - `git revert --no-commit 1fefb57`
