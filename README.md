@@ -30,6 +30,8 @@ Create revert commit for latest commit
 
 `git revert HEAD`
 
+This will NOT delete the last commit. It will UNDO this commit by creating a NEW commit which undoes the changes of that commit / restores them.
+
 Revert specific commit
 
 `git revert <Commit-Nr>` // revert the changes done in that specific commit
