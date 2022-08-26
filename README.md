@@ -40,16 +40,24 @@ Revert specific commit
 
 `git revert HEAD~3`
 
-This will NOT undo the latest three commits. 
+This will NOT undo the latest three commits. Revert always just addresses ONE commit. Instead we can do
 
-In case you want to revert multiple commits, You have to revert EVERY SINGLE commit:
+`git revert --no-commit HEAD~3..HEAD`
 
-- `git revert --no-commit 17b787d784065c`
-- `git revert --no-commit 1fefb57`
-- `git revert --no-commit 8b3560b`
+This will revert all commit between LAST commit (=HEAD) and the last three commits
 
 The "--no-commit" command prevents that you create three new invert commits. Instead it just undoes all the changes and now you can add and commit them in ONE commit (which is a bit cleaner):
 
 `git add . && git commit -m "I restored the world!" `
 
+
+In case you want to revert multiple, specific commits, not just "the last ones", you have to revert EVERY SINGLE commit by its hash:
+
+- `git revert --no-commit 17b787d784065c`
+- `git revert --no-commit 1fefb57`
+- `git revert --no-commit 8b3560b`
+
+And afterwards: 
+
+`git add . && git commit -m "I restored the world!" `
 
