@@ -7,7 +7,7 @@
 - we can edit our faulty stuff and then commit it
 
 `git reset --hard`
-- alle meine Changes seit letztem Commit wegmachen
+- remove all my changes i did since last commit
 
 ## Fuckup - already commited (but not pushed)
 
