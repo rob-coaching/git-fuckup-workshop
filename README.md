@@ -1,5 +1,10 @@
 # Git Fuckup Workshop
 
+## Seeing all your commits and commit numbers
+
+`git log --oneline`
+
+
 ## Fuckup - not commited so far
 
 `git reset` 
@@ -25,8 +30,7 @@ Create revert commit for latest commit
 
 `git revert HEAD`
 
-Revert latest n commits
+Revert specific commit
 
-`git revert HEAD~3` // revert latest three commits
+`git revert <Commit-Nr>` // revert the changes done in that specific commit
 
-`git revert <Commit-Nr>` // revert INCLUDING the commit hash stated
