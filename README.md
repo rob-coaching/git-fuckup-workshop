@@ -18,10 +18,11 @@
 
 `git reset HEAD~<Anzahl-Commits>`
 
-Beispiel: `git reset HEAD~2` (letzte zwei Commits rückgängig machen)
+Example: `git reset HEAD~2` (remove latest two commits, but keep the code to fix it)
 
-Beispiel: main branch lokal zerstört => auf letzten Stand auf GitHub / der Kollegen zurücksetzen
+Example: main branch got completeley messed up => restore local main branch back to latest state of main on GitHub 
 
+`git checkout main`
 `git reset --hard origin/main`
 
 ## Fuckup already pushed
@@ -36,7 +37,9 @@ Revert specific commit
 
 `git revert <Commit-Nr>` // revert the changes done in that specific commit
 
-### Caution:
+This will again create a new commit which undos the changes from the given commit (e.g. if you added 3 lines to README in that commit, that command will delete that 3 lines again).
+
+### Caution
 
 `git revert HEAD~3`
 
@@ -44,7 +47,7 @@ This will NOT undo the latest three commits. Revert always just addresses ONE co
 
 `git revert --no-commit HEAD~3..HEAD`
 
-This will revert all commit between LAST commit (=HEAD) and the last three commits
+This will revert all commit between LAST commit (=HEAD) and the last three commits.
 
 The "--no-commit" command prevents that you create three new invert commits. Instead it just undoes all the changes and now you can add and commit them in ONE commit (which is a bit cleaner):
 
