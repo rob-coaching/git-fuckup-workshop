@@ -144,22 +144,23 @@ Happy Time Traveling!
 
 ## Completely messed up my local branch
 
-Sometimes we somehow (often after a merge with some outdated branch) get into a situation where we have our branch completely messed up.
+Sometimes we somehow get into a situation where we have our branch completely messed up. Often after a merge with some outdated branch. Or we had unsolved conflicts and used "git add ." and accidentally commited all that conflicts to our repo! Or we deleted accidentally some commits. Or or or. Humans can be super creative when it comes to destruction.
 
-In case we e.g. merged a branch, that had recent changes from our colleagues and we forgot to pull those changes before we merge.
+In case we e.g. merged a branch, that had recent changes from our colleagues and we forgot to pull those changes before we merge that branch into ours.
 Now we merged a completely oudated state of that branch into our current branch. 
 
-Now we can have two cases:
-- We realize DURING the merge, that we merged something outdated
-- We did not realize we deal with an outdated state. And merge all that oudated stuff in, fix the merge conflicts and finalize the merge. Nice work for the trashcan :)
+We can now have two cases:
+- We realize DURING the merge, that we merged something outdated and have not resolved all the conflicts so far
+- We did NOT realize we deal with an outdated state. And merge all that oudated stuff in, fixed the merge conflicts and finalized the merge already. Nice work for the trashcan :)
 
-Scenario 1 can easily be reverted. By simply ABORTING the merge with all the crazy conflicts, using:
+Scenario 1 can easily be reverted. By simply ABORT the merge with all the crazy conflicts, using:
+
 `git merge --abort`
 
-This will cancel the merge completely, as if it did not happen.
-But that only works, if the merge is still OPEN (=> usually if a merge is not successful / produces conflicts. This state can always be aborted).
+This will simply cancel the merge completely. As if it did not happen. Nice!
+But that only works, if the merge is still OPEN (=> usually if a merge is not successful / has open conflicts). This "merge in progress" state can always be aborted easily.
 
-A bit trickier is it, once we finalized that merge already. And now we have that completely messed up state.
+A bit trickier is becomes once we finalized that merge already, solving all the conflicts. And now we have that completely messed up state.
 
 Or we did something else and that given branch is totally fucked up, for whatever reason.
 
@@ -177,7 +178,7 @@ Now we fetch the latest changes from GitHub using:
 
 `git fetch`
 
-And now we harshly reset our LOCAL dev branch to the state on github (=> origin/dev)
+And now we harshly replace our LOCAL dev branch with the one on github (=> origin/dev)
 
 We can do this using the git reset command:
 
@@ -187,7 +188,7 @@ In this case:
 `git reset --hard origin/dev`
 
 WARNING!
-This will completely wipe out the state of your local branch and REPLACES it with the one on GitHub.
+This will completely wipe out the state of your local branch and REPLACE it with the branch code on GitHub.
 
 So always make sure you are on the CORRECT branch before doing that.
 
