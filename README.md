@@ -64,3 +64,73 @@ And afterwards:
 
 `git add . && git commit -m "I restored the world!" `
 
+## File code wrong
+
+If one or several files have unexpected code or code in a file is suddenly missing, we can fortunately check the history of that file. And can restore every state it had in the past!
+
+Therefore we can use the command "git log" which usually shows us the list of our commits in a branch.
+
+Using the "--name-status" flag we can additionally list the FILES that where changed in each commit and WHICH operation was done on the file (A - Added, M - Modified, D - deleted
+
+Example:
+`git log --oneline --name-status`
+
+Gives e.g. this output:
+```
+b967d3a (HEAD -> main) Added F3
+A       f3.js
+75a225a Deleted F2
+D       f2.js
+5e5034d Added F2, Update F1
+M       f1.js
+A       f2.js
+102a5cc Added F1
+A       f1.js
+```
+
+Aha! Now we see, how the files developed: E.g. f1.js was created and commited the first time to our branch in commit 102a5cc.
+
+File f1.js then was modified the first time in commit 5e5034d. 
+And f2.js was deleted in commit 75a225a.
+
+Now often we are not interested in ALL the dozens of file changes, we usually check a specific file.
+
+Using the "--" flag afterwards, we can search the history for a specific FILE. 
+
+`git log --oneline --name-status -- *<filename>`
+
+Example - We look for the history just of f1.js (because the last code change does not fit)
+`git log --oneline --name-status -- *f1.js`
+
+This gives us now just the history of f1.js changes:
+
+```
+5e5034d Added F2, Update F1
+M       f1.js
+102a5cc Added F1
+A       f1.js
+```
+
+We see: 
+In Commit 5e3034d the file was modified (=M) the last time.
+In Commit 102a5cc ist was added (=A) the first time.
+
+We can now check exactly the state the file had in these commits, e.g. in Commit 102a5cc - with the "git show" command:
+
+`git show 102a5cc -- *f1.js`
+
+Using git show we now see the exact code change on file f1.js that was done in Commit 102a5cc.
+
+In case we wanna have these lines back, we could now simply copy & paste these lines and add them back in.
+
+Alternatively we can restore the complete file from that commit:
+
+`git checkout -f 102a5cc -- *f1.js`
+
+Using the -- flag we can checkout not just a branch, we can also checkout an individual file (!) only. From any previous commit. Super Handy!
+
+Now it replaces your current / messed up version of f1.js in your branch with that previous one. But you still need to add and commit that change, so tell git that you REALLY wanna get back to that old state of the file.
+
+Fortunately in Git we can restore almost everything. If we know how :)
+
+Happy Time Traveling!
