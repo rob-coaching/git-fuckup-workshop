@@ -64,7 +64,11 @@ And afterwards:
 
 `git add . && git commit -m "I restored the world!" `
 
-## File code wrong
+## File code wrong / outdated
+
+At some point when we start our app or we work on a file in the project after some time, we realize something is wrong.
+
+Some code on the file has an outdated state! Or code is completely missing. Maybe after a merge where we e.g. resolved the conflict wrong / deleting accidentally some code that was valid.
 
 If one or several files have unexpected code or code in a file is suddenly missing, we can fortunately check the history of that file. And can restore every state it had in the past!
 
