@@ -140,3 +140,71 @@ Now it replaces your current / messed up version of f1.js in your branch with th
 Fortunately in Git we can restore almost everything. If we know how :)
 
 Happy Time Traveling!
+
+
+## Completely messed up my local branch
+
+Sometimes we somehow (often after a merge with some outdated branch) get into a situation where we have our branch completely messed up.
+
+In case we e.g. merged a branch, that had recent changes from our colleagues and we forgot to pull those changes before we merge.
+Now we merged a completely oudated state of that branch into our current branch. 
+
+Now we can have two cases:
+- We realize DURING the merge, that we merged something outdated
+- We did not realize we deal with an outdated state. And merge all that oudated stuff in, fix the merge conflicts and finalize the merge. Nice work for the trashcan :)
+
+Scenario 1 can easily be reverted. By simply ABORTING the merge with all the crazy conflicts, using:
+`git merge --abort`
+
+This will cancel the merge completely, as if it did not happen.
+But that only works, if the merge is still OPEN (=> usually if a merge is not successful / produces conflicts. This state can always be aborted).
+
+A bit trickier is it, once we finalized that merge already. And now we have that completely messed up state.
+
+Or we did something else and that given branch is totally fucked up, for whatever reason.
+
+In the worst case we cannot even pull from or push to the remote branch anymore. Because of a history diversion between your local (on your PC) and central branch (on GitHub).
+
+And the only thing we want how is get BACK our local branch to the last state of that branch we have on Github! Our last safe haven so to say...
+
+Fortunately, also for that scenario there is a way:
+
+We checkout our messed up branch, e.g. dev: 
+
+`git checkout dev`
+
+Now we fetch the latest changes from GitHub using: 
+
+`git fetch`
+
+And now we harshly reset our LOCAL dev branch to the state on github (=> origin/dev)
+
+We can do this using the git reset command:
+
+`git reset --hard origin/<branchname>`
+
+In this case:
+`git reset --hard origin/dev`
+
+WARNING!
+This will completely wipe out the state of your local branch and REPLACES it with the one on GitHub.
+
+So always make sure you are on the CORRECT branch before doing that.
+
+E.g. you want to restore dev, then do these steps:
+```
+git checkout dev
+git fetch
+git reset --hard origin/dev
+```
+
+Other example: You want to restore branch "blog":
+```
+git checkout blog
+git fetch
+git reset --hard origin/blog
+```
+
+
+So this is usually what we want after a complete messed up state of our branch.
+And can often get ourselves out of hell again! Finally!
