@@ -74,7 +74,8 @@ If one or several files have unexpected code or code in a file is suddenly missi
 
 Therefore we can use the command "git log" which usually shows us the list of our commits in a branch.
 
-Using the "--name-status" flag we can additionally list the FILES that where changed in each commit and WHICH operation was done on the file (A - Added, M - Modified, D - deleted
+Using the "--name-status" flag we can additionally list the FILES that where changed in each commit. 
+And WHICH operation was done on the file (A - Added, M - Modified, D - deleted)
 
 Example:
 `git log --oneline --name-status`
@@ -103,7 +104,8 @@ Using the "--" flag afterwards, we can search the history for a specific FILE.
 
 `git log --oneline --name-status -- *<filename>`
 
-Example - We look for the history just of f1.js (because the last code change does not fit)
+Example - We look for the history just of f1.js (because the last code change does not fit):
+
 `git log --oneline --name-status -- *f1.js`
 
 This gives us now just the history of f1.js changes:
