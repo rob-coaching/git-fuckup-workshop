@@ -16,7 +16,7 @@
 
 ## Fuckup - already commited (but not pushed)
 
-`git reset HEAD~<Anzahl-Commits>`
+`git reset HEAD~<Amount-of-Commits>`
 
 Example: `git reset HEAD~2` (remove latest two commits, but keep the code to fix it)
 
