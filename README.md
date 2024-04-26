@@ -16,6 +16,10 @@
 
 ## Fuckup - already commited (but not pushed)
 
+In the next sections We will now deal often with the so-called "HEAD" commit. That simply is the LATEST commit that was done in your current branch. 
+
+Remove commits: 
+
 `git reset HEAD~<Amount-of-Commits>`
 
 Example: `git reset HEAD~2` (remove latest two commits, but keep the code to fix it)
