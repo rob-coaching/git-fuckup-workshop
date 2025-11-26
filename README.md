@@ -51,7 +51,7 @@ This will NOT undo the latest three commits. Revert always just addresses ONE co
 
 `git revert --no-commit HEAD~3..HEAD`
 
-This will revert all commit between LAST commit (=HEAD) and the last three commits.
+This will revert all commits between the LAST commit (=HEAD) and the third last commit. Or more clear: The last three commits. Notive the ".." syntax to indicate a RANGE of commits.
 
 The "--no-commit" command prevents that you create three new invert commits. Instead it just undoes all the changes and now you can add and commit them in ONE commit (which is a bit cleaner):
 
