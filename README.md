@@ -1,4 +1,4 @@
-# Git Fuckup Workshop
+# Git F*ckup Workshop
 
 ## Seeing all your commits and commit numbers
 
@@ -72,11 +72,7 @@ And afterwards:
 `git add . && git commit -m "I restored the world!" `
 
 
-Another example: My last commit was okay, I want to keep that. But the two commits before suck!
-
-`git revert -n HEAD~3..HEAD~1`
-
-This would keep the current, last commit (=HEAD), but reverts the two bad commits before that one.
+Happy unmessing your mess, dear grasshopper!
 
 
 ## File code wrong / outdated
