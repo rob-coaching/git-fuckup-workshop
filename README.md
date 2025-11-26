@@ -53,12 +53,13 @@ This will NOT undo the latest three commits. Revert always just addresses ONE co
 
 This will revert all commits between the LAST commit (=HEAD) and the third last commit. Or more clear: The last three commits. Notive the ".." syntax to indicate a RANGE of commits.
 
-**Important**: Please note, that you first need to state the Commit, where the world was still okay, and AFTERWARDS the commit until you want stuff reverted (so in this case up to the current / last commit).
+**Important**: Please note, that you first need to state the Commit, where the world was still okay (!). This commit will NOT get reverted, it marks the point where everything was fine and the BAD commits begin from here on. And AFTERWARDS you state the commit until you want stuff reverted (so in this case up to the current / last commit).
 
 The "--no-commit" command prevents that you create three new invert commits. Instead it just undoes all the changes and now you can add and commit them in ONE commit (which is a bit cleaner):
 
-`git add . && git commit -m "I restored the world!" `
+Instead of "--no-commit" you can also state the short flag "-n": e.g. `git revert -n HEAD~3..HEAD`
 
+`git add . && git commit -m "I restored the world!" `
 
 In case you want to revert multiple, specific commits, not just "the last ones", you have to revert EVERY SINGLE commit by its hash:
 
@@ -69,6 +70,14 @@ In case you want to revert multiple, specific commits, not just "the last ones",
 And afterwards: 
 
 `git add . && git commit -m "I restored the world!" `
+
+
+Another example: My last commit was okay, I want to keep that. But the two commits before suck!
+
+`git revert -n HEAD~3..HEAD~1`
+
+This would keep the current, last commit (=HEAD), but reverts the two bad commits before that one.
+
 
 ## File code wrong / outdated
 
