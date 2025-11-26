@@ -53,6 +53,8 @@ This will NOT undo the latest three commits. Revert always just addresses ONE co
 
 This will revert all commits between the LAST commit (=HEAD) and the third last commit. Or more clear: The last three commits. Notive the ".." syntax to indicate a RANGE of commits.
 
+**Important**: Please note, that you first need to state the Commit, where the world was still okay, and AFTERWARDS the commit until you want stuff reverted (so in this case up to the current / last commit).
+
 The "--no-commit" command prevents that you create three new invert commits. Instead it just undoes all the changes and now you can add and commit them in ONE commit (which is a bit cleaner):
 
 `git add . && git commit -m "I restored the world!" `
